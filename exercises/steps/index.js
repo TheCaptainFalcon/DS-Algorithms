@@ -17,6 +17,21 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+    // this is the loop accounting for rows (up/down)
+    for(let i = 0; i < n; i++) {
+        let stair = '';
+        // this is the loop accounting for columns(left/right)
+        for(let x = 0; x < n; x++) {
+            // summary: if the column is <= row (index)
+            if(x <= i) {
+                stair += '#';
+            } else {
+                stair += ' ';
+            }
+        }
+        console.log(stair)
+    }
+}
 
 module.exports = steps;
