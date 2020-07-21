@@ -36,6 +36,8 @@ function matrix(n) {
             counter++;
         }
         startRow++;
+        
+        //*notice the increase is now the center of attention - the next moving element of the next loop//
 
         // shift to Right column
         for(let i = startRow; i <= endRow; i++) {
@@ -54,6 +56,7 @@ function matrix(n) {
 
         // start column (complete loop back to left side)
         for(let i = endRow; i >= startRow; i--) {
+            // i is first because its a changing element from middle row to upper 
             results[i][startColumn] = counter;
             counter++;
         }

@@ -8,6 +8,26 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+function fib(n) {
+    // because the first two numbers will always be constant and the fact that there are no previous 2 numbers for those entries
+    let result = [0, 1] 
+ 
+    for(let i = 2; i <= n; i++) {
+        let a = result[i-1];
+     let b = result[i-2];
+      let c = a + b;
+      result.push(c)
+    }
+     return result[n]
+}
+
+// // recursion solution
+// function fib(n) {
+//     if (n < 2) {
+//         return n;
+//     } else {
+//     return fib(n-2) + fib(n-1);
+//     }
+// }
 
 module.exports = fib;
