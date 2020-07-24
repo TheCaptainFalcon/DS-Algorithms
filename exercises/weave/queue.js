@@ -18,6 +18,7 @@ class Queue {
   }
 
   peek() {
+    // also an indicator for index.js to see if element exists in different queues
     return this.data[this.data.length - 1]
   }
 }
