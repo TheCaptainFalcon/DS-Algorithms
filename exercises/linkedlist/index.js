@@ -158,6 +158,26 @@ class LinkedList {
 
     }
 
+    insertAt(data, index) {
+        // edge case for no nodes
+        if(!this.head) {
+            return this.head = new Node(data)
+        }
+        
+        if(index === 0) {
+            // key is the 2nd argument to assign as new next value
+            return this.head = new Node(data, this.head)
+        }
+
+        // for the last edge case - if this returns false, use the second
+        let previous = this.getAt(index - 1) || this.getLast()
+        // forms the connect of the new node inserted to the node after it
+        let node = new Node(data, previous.next)
+        
+        // when we want to point the previous's next to the new node (both are needed)
+        previous.next = node;    
+    }
+
 }
 
 
