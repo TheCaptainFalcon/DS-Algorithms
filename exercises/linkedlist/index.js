@@ -16,6 +16,10 @@ class LinkedList {
     
     insertFirst(data) {
         this.head = new Node(data, this.head);
+
+        // it may be better to just aim for insertAt if we are looking at other elements, which will make first/last methods redundant
+        // therefore, this is a refactor appropriately fitting for this scenario
+        // this.insertAt(data, 0)
     }
 
     size() {
@@ -32,6 +36,9 @@ class LinkedList {
     
     getFirst() {
         return this.head;
+
+        // refactor 
+        // this.getAt(0)
     }
 
     getLast() {
@@ -47,6 +54,9 @@ class LinkedList {
             }
             node = node.next;
         }
+
+        // refactor
+        // return this.getAt(this.size() -1);
     }
 
     clear() {
@@ -118,7 +128,37 @@ class LinkedList {
             // unable to find correct node - exit while loop 
             return null;
         }
+
+    removeAt(index) {
+
+        // edge case for no nodes
+        if(!this.head) {
+            return null;
+        }
+
+        if(index === 0) {
+            // this still works as expected even if there are no nodes ahead
+            return this.head = this.head.next
+        }
+        
+        // reuse getAt to find previous nodes of current index
+        let previous = this.getAt(index - 1);
+
+        // edge case for out of bounds larger than 1 index difference with available nodes        
+        if(!previous) {
+            return null;
+        }
+
+        // edge case for 1 index larger than available nodes
+        if(!previous.next) {
+            return null;
+        }
+
+        previous.next = previous.next.next;
+
     }
+
+}
 
 
 module.exports = { Node, LinkedList };
