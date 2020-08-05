@@ -21,7 +21,10 @@ class Node {
     }
 
     remove(data) {
-        this.children.pop(data)
+        // must add this.children = this.children etc. because the filter method does not modify the original array
+        this.children = this.children.filter(node => {
+            return node.data !== data
+        })
     }
 }
 
