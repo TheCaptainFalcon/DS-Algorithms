@@ -48,6 +48,20 @@ class Tree {
             fn(node);
         }     
     }
+
+    traverseDF(fn) {
+        let arr = [this.root];
+
+        while(arr.length) {
+            // remains shift for normal iterative operations
+            // shift = removal
+            let node = arr.shift();
+            // notice difference from push -> unshift
+            // unshift = add
+            arr.unshift(...node.children);
+            fn(node)
+        }
+    }
 }
 
 
