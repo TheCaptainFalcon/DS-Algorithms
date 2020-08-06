@@ -28,6 +28,28 @@ class Node {
     }
 }
 
-class Tree {}
+class Tree {
+    constructor() {
+        // essentially the head from linked list
+        this.root = null;
+    }
+    traverseBF(fn) {
+        let arr = [this.root];
+        
+        while(arr.length) {
+            // removes the first elements of array
+            let node = arr.shift();
+
+            // without the spread operator it would push an array into an array
+            // thus making it into a nested array
+            // other solution is to make a for..of loop and iterate results into arr
+            arr.push(...node.children);
+            // 'accepts a function'
+            fn(node);
+        }     
+    }
+}
+
+
 
 module.exports = { Tree, Node };
