@@ -33,6 +33,29 @@ class Node {
             this.right = new Node(data);
         }
     }
+    contains(data) {
+        if(data === this.data) {
+            // it is "this" because we want to return the ENTIRE node
+            return this;
+        } else if(data < this.data && this.left) {
+            // we want to have a return statement here
+            return this.left.contains(data);
+        } else if (data > this.data && this.right) {
+            return this.right.contains(data);
+        } else {
+            return null;
+        }
+
+        // if(data < this.data && this.left) {
+        //     this.left.contains(data);
+        // } else if (data > this.data && this.right) {
+        //     this.right.contains(data);
+        // } else if (data === this.data) {
+        //     return this;
+        // } else {
+        //     return null;
+        // }
+    }
 }
 
 module.exports = Node;
